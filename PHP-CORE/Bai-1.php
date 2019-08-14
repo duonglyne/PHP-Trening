@@ -3,29 +3,30 @@
 
 function LongestWord($sen)
 {
-    $arr1 = array();
+    $arr1 = str_split($sen);
     $arr2 = array();
-    for ($i = 0; $i < strlen($sen); $i++)
+    $arr3 = array();
+    for ($i = 0; $i < sizeof($arr1); $i++)
     {
-        $check = preg_match('/[a-zA-Z]/', substr($sen, $i, 1));
+        $check = preg_match('/[a-zA-Z]/', $arr1[$i]);
         if ($check)
         {
-            $arr1[] = substr($sen, $i, 1);
-        } else if (!empty($arr1))
+            $arr2[] = $arr1[$i];
+        } else if (!empty($arr2))
         {
-            $arr2[] = implode($arr1);
-            unset($arr1);   
+            $arr3[] = implode($arr2);
+            unset($arr2);   
         }
     }
 
-    $max = strlen($arr2[0]);
+    $max = strlen($arr3[0]);
     $maxString = "";
-    for ($j=1; $j < sizeof($arr2); $j++) 
+    for ($j=1; $j < sizeof($arr3); $j++) 
     { 
-        if (strlen($arr2[$j]) > $max)
+        if (strlen($arr3[$j]) > $max)
         {
-            $max = strlen($arr2[$j]);
-            $maxString = $arr2[$j];
+            $max = strlen($arr3[$j]);
+            $maxString = $arr3[$j];
         }
     }
 
