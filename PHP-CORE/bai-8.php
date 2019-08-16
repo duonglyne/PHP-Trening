@@ -1,6 +1,7 @@
 <?php
 function commas($number)
 {
-    return number_format($number, 2, '.', ',');
+    $str = strstr((string)$number, '.');
+    return  number_format($number,strlen($str) - 1 , '.', ',');
 }
-echo commas(100000.23);
+echo commas(-1000000.123);
