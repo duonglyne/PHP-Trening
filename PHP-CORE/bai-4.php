@@ -7,22 +7,26 @@ function backspaceInString($str)
     if (empty($arr))
     {
         return "";
-    } else if (!in_array("#", $arr))
+    } elseif (!in_array("#", $arr))
     {
         return join("", $arr);
-    } else if ($arr[0] == "#")
-    {
-        unset($arr[0]);
-        backspaceInString(join("", $arr));
-    } else 
+    }  else
     {
         for ($i=0; $i < sizeof($arr) ; $i++) 
         { 
-            $arr_out[] = $arr[$i]
-            if ($arr[$i] == "#")
+            if ($arr[$i] != "#")
             {
-                
+                array_push($arr_out, $arr[$i]);
+            } else
+            {
+                if (!empty($arr_out))
+                {
+                    array_pop($arr_out);
+                }
             }
         }
+        return join("", $arr_out);;
     }
 }
+$input = "abc#d##c";
+echo backspaceInString($input);
