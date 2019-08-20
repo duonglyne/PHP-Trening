@@ -1,10 +1,10 @@
 <?php
 function LetterChanges($str) {  
   $arr = str_split($str);
-  $let = range("a","z");
+  $arr_word = range("a","z");
   $vow = array('a', 'e', 'i', 'o', 'u');
   foreach($arr as $key => $value){
-    if(in_array($value,$let)){
+    if(in_array($value,$arr_word)){
       $arr[$key] = $value=='z' ? 'a' : ++$value; 
       if(in_array($arr[$key],$vow)){
          $arr[$key] = strtoupper($arr[$key]); 
@@ -18,5 +18,5 @@ function LetterChanges($str) {
          
 }
 
-$test = "hello*3";
+$test = "duonglyvan";
 echo LetterChanges($test);
