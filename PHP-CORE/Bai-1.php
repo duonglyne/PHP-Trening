@@ -12,12 +12,18 @@ function LongestWord($sen)
         if ($check)
         {
             $arr2[] = $arr1[$i];
+            if (!isset($arr1[$i+1]))
+            {
+                $arr3[] = implode($arr2);
+                unset($arr2);
+            }
         } else if (!empty($arr2))
         {
             $arr3[] = implode($arr2);
             unset($arr2);   
         }
     }
+    // print_r($arr3); exit;
 
     $max = strlen($arr3[0]);
     $maxString = "";
@@ -32,5 +38,5 @@ function LongestWord($sen)
 
     return $maxString;
 }
-$test = "I love dogs";
+$test = "I love dogss";
 echo LongestWord($test);
